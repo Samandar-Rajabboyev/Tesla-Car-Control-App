@@ -32,4 +32,46 @@ class HomeController extends ChangeNotifier {
     isTrunkLock = !isTrunkLock;
     notifyListeners();
   }
+
+  bool isCoolSelected = true;
+
+  void updateCoolSelectedTab() {
+    isCoolSelected = !isCoolSelected;
+    notifyListeners();
+  }
+
+  bool isShowTyres = false;
+
+  void showTyres(int index) {
+    if (selectedBottomTab != 3 && index == 3) {
+      Future.delayed(Duration(milliseconds: 400), () {
+        isShowTyres = true;
+        notifyListeners();
+      });
+    } else {
+      isShowTyres = false;
+      notifyListeners();
+    }
+  }
+
+  bool isShowTyreStatus = false;
+
+  void tyreStatusController(int index) {
+    if (selectedBottomTab != 3 && index == 3) {
+      isShowTyreStatus = true;
+      notifyListeners();
+    } else {
+      Future.delayed(Duration(milliseconds: 400), () {
+        isShowTyreStatus = false;
+        notifyListeners();
+      });
+    }
+  }
+
+  int temp = 23;
+
+  void updateTemp(int value) {
+    temp = value;
+    notifyListeners();
+  }
 }
